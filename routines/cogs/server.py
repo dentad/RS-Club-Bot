@@ -36,7 +36,7 @@ from routines import engine
 
 import requests
 
-from discord import Webhook, AsyncWebhookAdapter
+from discord import Webhook
 import aiohttp
 
 import cProfile

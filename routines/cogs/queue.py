@@ -34,7 +34,7 @@ from discord import Embed
 
 import numpy as np
 
-from discord import Webhook, AsyncWebhookAdapter
+from discord import Webhook
 import aiohttp
 
 from bot import LOGGER, RSClubBot
