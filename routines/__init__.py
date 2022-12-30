@@ -13,7 +13,7 @@ from sqlalchemy.engine.url import URL
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker as maker
 import asyncio
-from discord_slash import SlashCommand, SlashContext
+# from discord_slash import SlashCommand, SlashContext
 
 postgres_URL = URL.create('postgresql+asyncpg',
                           database=os.getenv('DATABASE'),
@@ -69,7 +69,7 @@ def on_ready_setup(bot: commands.bot):
 
 def slash_command_setup(bot: commands.bot):
     """Configures Slash Command Setup"""
-    slash = SlashCommand(bot, sync_commands=True)
+    # slash = SlashCommand(bot, sync_commands=True)
 
 
 def command_setup(bot: commands.bot):

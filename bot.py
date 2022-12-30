@@ -17,7 +17,7 @@ from sqlalchemy.engine.url import URL
 import asyncio
 
 import routines
-from discord_slash import SlashCommand, SlashContext
+# from discord_slash import SlashCommand, SlashContext
 
 
 
