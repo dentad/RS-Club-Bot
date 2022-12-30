@@ -65,6 +65,9 @@ if __name__ == '__main__':
     else:
         intents = discord.Intents(messages=True, guilds=True)
         intents.reactions = True
+
+    intents.messages = True
+    intents.message_content = True
     bot = RSClubBot(
         token=TOKEN,
         command_prefix=["+", "!", "-"],

@@ -442,7 +442,7 @@ class ServerJoin(commands.Cog, name='OnServerJoin'):
                                     # Send the message with webhooks
                                     user = await self.find('u', message.author.id)
                                     async with aiohttp.ClientSession() as webhook_session:
-                                        webhook = Webhook.from_url(webhook_url, adapter=AsyncWebhookAdapter(webhook_session))
+                                        webhook = Webhook.from_url(webhook_url, session=webhook_session)
                                         if len(message.attachments) == 0:
                                             await webhook.send(message.content, username=message.author.display_name, avatar_url=str(user.avatar_url))
                                         else:
@@ -466,7 +466,7 @@ class ServerJoin(commands.Cog, name='OnServerJoin'):
                             webhook_url = os.getenv("FEEDBACK_WEBHOOK")
                         async with aiohttp.ClientSession() as webhook_session:
                             if webhook_url is not None:
-                                webhook = Webhook.from_url(webhook_url, adapter=AsyncWebhookAdapter(webhook_session))
+                                webhook = Webhook.from_url(webhook_url, session=webhook_session)
                                 if len(message.attachments) == 0:
                                     await webhook.send(message.content, username=username, avatar_url=str(user.avatar_url))
                                 else:
