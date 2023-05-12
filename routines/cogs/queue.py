@@ -29,8 +29,8 @@ from sqlalchemy import event
 from random import random
 
 from discord import Embed
-# from discord_slash import cog_ext, SlashContext
-# from discord_slash.utils.manage_commands import create_option, create_choice
+from discord_slash import cog_ext, SlashContext
+from discord_slash.utils.manage_commands import create_option, create_choice
 
 import numpy as np
 
@@ -166,36 +166,36 @@ class RSQueue(commands.Cog, name='Queue'):
         self.success_embed = discord.Embed(title="Success", color=discord.Color.green())
 
     # slash command testing
-    # @cog_ext.cog_slash(
-    #     name="display_queue",
-    #     description="Displays the queue of a specific rs level",
-    #     options=[
-    #         create_option(
-    #             name="level",
-    #             description="The rs level",
-    #             option_type=4,
-    #             required=True
-    #         )
-    #     ]
-    # )
-    # async def display_queue(self, ctx: SlashContext, level: int):
-    #     if 5 <= level <= 11:
-    #         async with sessionmaker() as session:
-    #             queues = list((await session.execute(select(Queue))).scalars())
-    #             force = False
-    #             if ctx.guild.id == clubs_server_id:
-    #                 force = True
-    #             server = await session.get(ExternalServer, ctx.guild.id)
-    #             if force or server.show:
-    #                 embed = await self.print_queue(ctx.guild, ctx.channel, level, queues, display=False, slash=True)
-    #                 if embed is None:
-    #                     await ctx.send(f"No RS{level} Queues found, you can start one by typing `!in {level}`", hidden=True)
-    #                 else:
-    #                     await ctx.send(embed=embed, hidden=True)
-    #             else:
-    #                 await ctx.send("The queueing system has been turned off on this server. If you want to turn it back on, have an admin run the `!show` command", hidden=True)
-    #     else:
-    #         await ctx.send(f"RS{level} not found. specify a level between 5 and 11", hidden=True)
+    @cog_ext.cog_slash(
+        name="display_queue",
+        description="Displays the queue of a specific rs level",
+        options=[
+            create_option(
+                name="level",
+                description="The rs level",
+                option_type=4,
+                required=True
+            )
+        ]
+    )
+    async def display_queue(self, ctx: SlashContext, level: int):
+        if 5 <= level <= 11:
+            async with sessionmaker() as session:
+                queues = list((await session.execute(select(Queue))).scalars())
+                force = False
+                if ctx.guild.id == clubs_server_id:
+                    force = True
+                server = await session.get(ExternalServer, ctx.guild.id)
+                if force or server.show:
+                    embed = await self.print_queue(ctx.guild, ctx.channel, level, queues, display=False, slash=True)
+                    if embed is None:
+                        await ctx.send(f"No RS{level} Queues found, you can start one by typing `!in {level}`", hidden=True)
+                    else:
+                        await ctx.send(embed=embed, hidden=True)
+                else:
+                    await ctx.send("The queueing system has been turned off on this server. If you want to turn it back on, have an admin run the `!show` command", hidden=True)
+        else:
+            await ctx.send(f"RS{level} not found. specify a level between 5 and 11", hidden=True)
 
     async def get(self, data, type, value, all=False):
         if not all:
