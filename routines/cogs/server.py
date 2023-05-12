@@ -390,14 +390,14 @@ class ServerJoin(commands.Cog, name='OnServerJoin'):
             await session.commit()
 
 
-    
+
 
 
 
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        # <Message id=859239790952185876 channel=<TextChannel id=858484759994040370 name='rs-queues' position=1 nsfw=False news=False category_id=858484643632381953> type=<MessageType.default: 0> 
+        # <Message id=859239790952185876 channel=<TextChannel id=858484759994040370 name='rs-queues' position=1 nsfw=False news=False category_id=858484643632381953> type=<MessageType.default: 0>
         # author=<Member id=384481151475122179 name='Conbonbot' discriminator='0680' bot=False nick=None guild=<Guild id=858484643632381952 name='Testing Server' shard_id=None chunked=False member_count=2>> flags=<MessageFlags value=0>>
 
         # See if the talking database has anything in it
@@ -472,9 +472,9 @@ class ServerJoin(commands.Cog, name='OnServerJoin'):
                                 else:
                                     for attachment in message.attachments:
                                         await webhook.send(content=None, username=username, avatar_url=str(user.avatar_url), file=(await attachment.to_file()))
-                        
-                                                
-   
+
+
+
     @commands.command()
     async def startglobal(self, ctx):
         # Check to see if it is already enabled
@@ -541,7 +541,7 @@ class ServerJoin(commands.Cog, name='OnServerJoin'):
 
 
 
-        
+
 
 def setup(bot):
     bot.add_cog(ServerJoin(bot))

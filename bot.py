@@ -54,7 +54,7 @@ class RSClubBot(commands.Bot):
         routines.setup_coroutines(self)
         self.run(token)
 
-    
+
 
 
 

@@ -161,7 +161,7 @@ class RSQueue(commands.Cog, name='Queue'):
             "3️⃣": 3,
             "4️⃣": 4
         }
-        
+
         self.failed_embed = discord.Embed(title="Failure", color=discord.Color.red())
         self.success_embed = discord.Embed(title="Success", color=discord.Color.green())
 
@@ -210,7 +210,7 @@ class RSQueue(commands.Cog, name='Queue'):
                 if getattr(single, type) == value:
                     instances.append(single)
             return instances
-            
+
     @commands.command()
     async def feedback_connect(self, ctx, server_id: int):
         if ctx.author.id == 384481151475122179:
@@ -233,7 +233,7 @@ class RSQueue(commands.Cog, name='Queue'):
             await ctx.send("Disconnected")
         else:
             await ctx.send("This command can only be used by Conbonbot")
-        
+
     async def generate_run_id(self, session, event=False):
         if event:
             runs = (await session.execute(select(Event))).scalars()
@@ -314,7 +314,7 @@ class RSQueue(commands.Cog, name='Queue'):
         # Print out the queue
         people = list((await session.execute(select(Queue).where(Queue.level == level))).scalars())
         servers = list((await session.execute(select(ExternalServer).where(ExternalServer.show == True))).scalars())
-        
+
         clubs_string_people = ""
         print_people = []
         external_server_ids = []
@@ -476,7 +476,7 @@ class RSQueue(commands.Cog, name='Queue'):
                 if guild != -1 and channel != -1:
                     await self.print_queue(session, guild, channel, level, queues, False)
                     await channel.send(f"{ctx.author.display_name} has left the RS{level} Queue ({queue_status}/4)")
-    
+
     async def check(self, session, error_channel):
         msg = ""
         queues = list((await session.execute(select(Queue))).scalars())
@@ -591,7 +591,7 @@ class RSQueue(commands.Cog, name='Queue'):
     @commands.command()
     async def github(self, ctx):
         await ctx.send(f"Here's the github link to the bot (https://github.com/Conbonbot/RS-Club-Bot). If you want to contribute feel free to make a pull request!")
-    
+
     @commands.command()
     @commands.has_role("mod")
     async def run_check(self, ctx):
@@ -650,7 +650,7 @@ class RSQueue(commands.Cog, name='Queue'):
                     else:
                         levels = [str(queue.level) for queue in user_queues]
                         await ctx.send(f"You were found in these queues `{', '.join(levels)}`. Specify which one you'd like to refresh by adding the rs level to the end of the command.")
-   
+
     @commands.command()
     async def reset(self, ctx, level=None):
         async with sessionmaker.begin() as session:
@@ -722,18 +722,18 @@ class RSQueue(commands.Cog, name='Queue'):
                         message = discord.utils.get(await channel.history(limit=1000).flatten(), id=temp.message_id)
                         if(message is not None):
                             await message.delete()
-    
+
     async def clear_temp(self):
         while True:
             await asyncio.gather(asyncio.sleep(3600), self.remove_temp_data())
-    
+
     @commands.command()
     @commands.has_role("mod")
     async def start_temp_clear(self, ctx):
         await ctx.send("Task has been started")
         await self.clear_temp()
-        
-    
+
+
     @commands.command(name='1', help="Type +1/-1, which will add you/remove you to/from a RS Queue")
     async def _one(self, ctx, level=None, length=25):
         if ctx.message.content[0] == "+":
@@ -767,7 +767,7 @@ class RSQueue(commands.Cog, name='Queue'):
                 if ctx.guild.id == clubs_server_id:
                     level = self.rs_channel[str(ctx.message.channel)]
                     # check if command was sent in an rs channel
-                    if level != -1: 
+                    if level != -1:
                         has_right_role = False
                         for role in ctx.author.roles:
                             if str(role)[2:].isnumeric():  # Checks main role (rs#)
@@ -907,7 +907,7 @@ class RSQueue(commands.Cog, name='Queue'):
                     await self.joining_queue(ctx, session, level)
                 else:
                     await self.remove_players(ctx, session, level)
-                    
+
         # Not allowed to join the queue because of {reason}
         else:
             await ctx.send(f"{ctx.author.mention}, {reason}")
@@ -965,7 +965,7 @@ class RSQueue(commands.Cog, name='Queue'):
                         await asyncio.sleep(60)
                         await ctx.message.delete()
                         await msg.delete()
-                        
+
     async def remove_from_queue(self, ctx, session, level, amount):
         level = int(level)
         current_queue = await session.get(Queue, (ctx.author.id, level))

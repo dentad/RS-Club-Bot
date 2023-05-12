@@ -38,7 +38,7 @@ class Routine(object):
         actions = getattr(cls, 'actions', None)
         return actions
 
-        
+
 
 
 def setup_coroutines(bot: commands.bot):
@@ -65,7 +65,7 @@ def on_ready_setup(bot: commands.bot):
         setup = event(bot)
         setup.actions()
 
-    
+
 
 def slash_command_setup(bot: commands.bot):
     """Configures Slash Command Setup"""
