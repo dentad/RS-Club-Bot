@@ -20,20 +20,21 @@ import routines
 from discord_slash import SlashCommand, SlashContext
 
 
-
 load_dotenv()
 
-PROD_TOKEN = os.getenv('DISCORD_TOKEN')
-TEMP_TOKEN = os.getenv('TEMP_DISCORD_TOKEN')
+PROD_TOKEN = os.getenv("DISCORD_TOKEN")
+TEMP_TOKEN = os.getenv("TEMP_DISCORD_TOKEN")
 
 TOKEN = PROD_TOKEN or TEMP_TOKEN
 
 # If the TEMP token is defined we treat the environment as testing.
 TESTING = isinstance(TEMP_TOKEN, str)
 
-DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
+DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 if DEBUG and not TESTING:
-    raise ValueError('No DEBUG on production! (it may slow things down). Please disable debugging.')
+    raise ValueError(
+        "No DEBUG on production! (it may slow things down). Please disable debugging."
+    )
 LOG_LEVEL = logging.DEBUG if DEBUG or TESTING else logging.INFO
 logging.basicConfig(level=LOG_LEVEL)
 
@@ -41,7 +42,8 @@ LOGGER = logging.getLogger(__name__)
 
 if not TOKEN:
     raise ValueError(
-        'Found no discord token, please specify a DISCORD_TOKEN or TEMP_DISCORD_TOKEN environment variable.')
+        "Found no discord token, please specify a DISCORD_TOKEN or TEMP_DISCORD_TOKEN environment variable."
+    )
 
 
 class RSClubBot(commands.Bot):
@@ -54,12 +56,8 @@ class RSClubBot(commands.Bot):
         routines.setup_coroutines(self)
         self.run(token)
 
-    
 
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     if TESTING:
         intents = discord.Intents.default()
     else:
@@ -70,6 +68,6 @@ if __name__ == '__main__':
         command_prefix=["+", "!", "-"],
         intents=intents,
         case_insensitive=True,
-        help_command=None
+        help_command=None,
     )
     bot.run(TOKEN)

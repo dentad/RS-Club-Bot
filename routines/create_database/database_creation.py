@@ -6,8 +6,10 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from ..tables import Base
 from .. import engine
 
+
 class DatabaseCreation(CreateDatabaseEvent):
     """Creates the databases using SQLAlchemy"""
+
     def actions(self):
         @self.bot.event
         async def on_connect():
@@ -16,6 +18,9 @@ class DatabaseCreation(CreateDatabaseEvent):
                     Base.metadata.create_all,
                     tables=map(
                         lambda iterr: iterr[1],
-                        filter(lambda tup: 'rsqueue_data' not in tup[0], Base.metadata.tables.items())
-                    )
+                        filter(
+                            lambda tup: "rsqueue_data" not in tup[0],
+                            Base.metadata.tables.items(),
+                        ),
+                    ),
                 )

@@ -20,7 +20,8 @@ from sqlalchemy.sql.selectable import Select
 from sqlalchemy import inspect
 
 import sys, os
-sys.path.append(os.path.abspath(os.path.join('..', 'routines')))
+
+sys.path.append(os.path.abspath(os.path.join("..", "routines")))
 
 from routines.tables import Banned
 from routines import sessionmaker
@@ -28,13 +29,10 @@ from routines import sessionmaker
 # TODO: Use an actual settings file.
 
 
-
-class RSBan(commands.Cog, name='Ban'):
-
+class RSBan(commands.Cog, name="Ban"):
     def __init__(self, bot):
         self.bot = bot
         self.check_ban.start()
-
 
     async def check_ban_status(self):
         async with sessionmaker() as session:
@@ -46,15 +44,12 @@ class RSBan(commands.Cog, name='Ban'):
                         await session.delete(user)
             await session.commit()
 
-
-
     @tasks.loop(hours=24.0)
     async def check_ban(self):
         try:
             await self.check_ban_status()
         except Exception as e:
             print("ERROR IN CHECK BAN", e)
-
 
     @commands.command()
     @commands.has_permissions(administrator=True)
@@ -65,8 +60,13 @@ class RSBan(commands.Cog, name='Ban'):
             if person is None:
                 user = await self.bot.fetch_user(user_id)
                 unban_time = int(time.time()) + (days * 86400)
-                str_reason = ' '.join(reason)
-                ban_enter = Banned(user_id=user_id, nickname=user.display_name, unban_timestamp=unban_time, reason=str_reason)
+                str_reason = " ".join(reason)
+                ban_enter = Banned(
+                    user_id=user_id,
+                    nickname=user.display_name,
+                    unban_timestamp=unban_time,
+                    reason=str_reason,
+                )
                 session.add(ban_enter)
                 await session.commit()
                 if days != -1:
@@ -98,20 +98,27 @@ class RSBan(commands.Cog, name='Ban'):
             if len(banned_users.all()) != 0:
                 for user in banned_users:
                     if user.unban_timestamp != -1:
-                        ban_list.append(user.user_id, user.nickname, (user.unban_timestamp-current_time)/86400, user.reason) 
+                        ban_list.append(
+                            user.user_id,
+                            user.nickname,
+                            (user.unban_timestamp - current_time) / 86400,
+                            user.reason,
+                        )
                     else:
-                        ban_list.append(user.user_id, user.nickname, -1, user.reason) 
-                for (id, name, days, reason) in ban_list:
+                        ban_list.append(user.user_id, user.nickname, -1, user.reason)
+                for id, name, days, reason in ban_list:
                     if days != -1:
-                        await ctx.send(f"User ID: {id} | Name: {name} | Days until unban: {format(days,'.2f')} | Reason for ban: {reason}")
+                        await ctx.send(
+                            f"User ID: {id} | Name: {name} | Days until unban: {format(days,'.2f')} | Reason for ban: {reason}"
+                        )
                     else:
-                        await ctx.send(f"User ID: {id} | Name: {name} | Days until unban: Indefinite | Reason for ban: {reason}")
+                        await ctx.send(
+                            f"User ID: {id} | Name: {name} | Days until unban: Indefinite | Reason for ban: {reason}"
+                        )
             else:
                 await ctx.send("There are currently no banned users.")
 
 
-
-
 def setup(bot):
     bot.add_cog(RSBan(bot))
-    LOGGER.info('RS Role System loaded')
+    LOGGER.info("RS Role System loaded")
