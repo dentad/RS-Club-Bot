@@ -1,48 +1,48 @@
-import asyncio
-from asyncio.locks import Condition
+import sys
+import os
+
+# import asyncio
+# from asyncio.locks import Condition
 import time
-from aiosqlite.core import LOG
+# from aiosqlite.core import LOG
 
 import discord
-import sqlite3
-from discord import role
-from discord.ext.commands.core import has_permissions
-from discord.utils import get
-import psycopg2
+# import sqlite3
+# from discord import role
+# from discord.ext.commands.core import has_permissions
+# from discord.utils import get
+# import psycopg2
 
-from datetime import datetime
+# from datetime import datetime
 from discord.ext import commands, tasks
 from sqlalchemy import select
-from sqlalchemy import update
-from sqlalchemy import delete
-from sqlalchemy import and_
-from sqlalchemy.orm import load_only, session
-from sqlalchemy.sql.expression import insert
-from sqlalchemy.sql.selectable import Select
-from sqlalchemy import inspect
-from sqlalchemy import event
+# from sqlalchemy import update
+# from sqlalchemy import delete
+# from sqlalchemy import and_
+# from sqlalchemy.orm import load_only, session
+# from sqlalchemy.sql.expression import insert
+# from sqlalchemy.sql.selectable import Select
+# from sqlalchemy import inspect
+# from sqlalchemy import event
 
-from random import random
+# from random import random
 
 from bot import LOGGER
 from bot import TESTING
 
-import sys, os
-
 sys.path.append(os.path.abspath(os.path.join("..", "routines")))
 
-from routines.tables import ExternalServer, Feedback, Queue, Talking, Stats, Event, Data
+from routines.tables import ExternalServer, Feedback, Queue, Talking, Stats  # , Event, Data
 from routines import sessionmaker
-from routines import engine
+# from routines import engine
 
-import requests
+# import requests
 
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
 
-import cProfile
-import pstats
-
+# import cProfile
+# import pstats
 
 from dotenv import load_dotenv
 

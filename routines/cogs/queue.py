@@ -1,47 +1,53 @@
+import sys
+import os
+
 import asyncio
-from asyncio.locks import Condition
-from logging import Logger
-import re
-from tabnanny import check
+# from asyncio.locks import Condition
+# from logging import Logger
+# import re
+# from tabnanny import check
 import time
-from aiosqlite.core import LOG
+# from aiosqlite.core import LOG
 
 import discord
-import sqlite3
-from discord.utils import get
+# import sqlite3
+# from discord.utils import get
 from dotenv.main import load_dotenv
-import psycopg2
+# import psycopg2
 
 from datetime import datetime
 from discord.ext import commands, tasks
-from psycopg2 import extensions
+# from psycopg2 import extensions
 from sqlalchemy import select
-from sqlalchemy import update
+# from sqlalchemy import update
 from sqlalchemy import delete
 from sqlalchemy import and_
-from sqlalchemy.orm import selectinload, session
-from sqlalchemy.sql.expression import insert
-from sqlalchemy.sql.functions import user
-from sqlalchemy.sql.selectable import Select
+# from sqlalchemy.orm import selectinload, session
+# from sqlalchemy.sql.expression import insert
+# from sqlalchemy.sql.functions import user
+# from sqlalchemy.sql.selectable import Select
 from sqlalchemy import inspect
-from sqlalchemy import event
+# from sqlalchemy import event
 
-from random import random
+# from random import random
 
-from discord import Embed
+# from discord import Embed
 from discord_slash import cog_ext, SlashContext
-from discord_slash.utils.manage_commands import create_option, create_choice
+from discord_slash.utils.manage_commands import create_option  # , create_choice
 
-import numpy as np
+# import numpy as np
 
-from discord import Webhook, AsyncWebhookAdapter
-import aiohttp
+# from discord import Webhook, AsyncWebhookAdapter
+# import aiohttp
 
-from bot import LOGGER, RSClubBot
+from bot import LOGGER  # , RSClubBot
 from bot import TESTING
 
-import sys, os
 from dotenv import load_dotenv
+import random
+
+# import cProfile
+# import pstats
 
 sys.path.append(os.path.abspath(os.path.join("..", "routines")))
 load_dotenv()
@@ -82,11 +88,6 @@ from routines.tables import (
 )
 from routines import sessionmaker
 from routines import engine
-import random
-
-
-import cProfile
-import pstats
 
 if TESTING:
     clubs_server_id = 805959424081920022

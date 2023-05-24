@@ -1,9 +1,9 @@
 """Setup help command."""
-from routines.cogs import queue
+# from routines.cogs import queue
 import discord
 from routines.commands import CommandRoutine
 
-from bot import LOGGER
+# from bot import LOGGER
 from bot import TESTING
 
 

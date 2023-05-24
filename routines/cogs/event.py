@@ -1,39 +1,40 @@
-import asyncio
-from asyncio.locks import Condition
-import re
-import time
-from aiosqlite.core import LOG
+import sys
+import os
+
+# import asyncio
+# from asyncio.locks import Condition
+# import re
+# import time
+# from aiosqlite.core import LOG
 
 import discord
-import sqlite3
-from discord import player
-from discord import embeds
-import psycopg2
+# import sqlite3
+# from discord import player
+# from discord import embeds
+# import psycopg2
 
-from datetime import datetime
+# from datetime import datetime
 from discord.ext import commands, tasks
 from sqlalchemy import select
-from sqlalchemy import update
-from sqlalchemy import delete
-from sqlalchemy import and_
-from sqlalchemy.log import echo_property
-from sqlalchemy.sql.expression import insert
-from sqlalchemy.sql.selectable import Select
-from sqlalchemy import inspect
-from sqlalchemy import event
+# from sqlalchemy import update
+# from sqlalchemy import delete
+# from sqlalchemy import and_
+# from sqlalchemy.log import echo_property
+# from sqlalchemy.sql.expression import insert
+# from sqlalchemy.sql.selectable import Select
+# from sqlalchemy import inspect
+# from sqlalchemy import event
 
 from random import random
 
 from bot import LOGGER
 from bot import TESTING
 
-import sys, os
-
 sys.path.append(os.path.abspath(os.path.join("..", "routines")))
 
-from routines.tables import Queue, Data, Temp, Stats, Event
+from routines.tables import Stats, Event  # , Queue, Data, Temp
 from routines import sessionmaker
-from routines import engine
+# from routines import engine
 
 if TESTING:
     rs_leaderboard_channel_id = 867107483951955968

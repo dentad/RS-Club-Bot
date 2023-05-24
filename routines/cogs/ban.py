@@ -1,25 +1,26 @@
-import sqlite3
-import aiosqlite
+import sys
+import os
 
-import discord
+# import sqlite3
+# import aiosqlite
+
+# import discord
 from discord.ext import commands
-from sqlalchemy.orm import session
+# from sqlalchemy.orm import session
 
 from bot import LOGGER
-from bot import TESTING
+# from bot import TESTING
 import time
-import asyncio
+# import asyncio
 
-from datetime import datetime
+# from datetime import datetime
 from discord.ext import commands, tasks
 from sqlalchemy import select
-from sqlalchemy import update
-from sqlalchemy import delete
-from sqlalchemy import and_
-from sqlalchemy.sql.selectable import Select
-from sqlalchemy import inspect
-
-import sys, os
+# from sqlalchemy import update
+# from sqlalchemy import delete
+# from sqlalchemy import and_
+# from sqlalchemy.sql.selectable import Select
+# from sqlalchemy import inspect
 
 sys.path.append(os.path.abspath(os.path.join("..", "routines")))
 

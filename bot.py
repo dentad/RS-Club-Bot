@@ -1,23 +1,25 @@
-#!/bin/python3
-from importlib.metadata import metadata
+#!/usr/bin/env python3
+
+# from importlib.metadata import metadata
 import logging
 import os
 
 import discord
 
-import psycopg2
+# import psycopg2
 
 from discord.ext import commands
 from dotenv import load_dotenv
 
-from sqlalchemy.sql.functions import char_length
-import argparse
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.engine.url import URL
-import asyncio
+# from sqlalchemy.sql.functions import char_length
+# import argparse
+# from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+# from sqlalchemy.engine.url import URL
+# import asyncio
 
 import routines
-from discord_slash import SlashCommand, SlashContext
+
+# from discord_slash import SlashCommand, SlashContext
 
 
 load_dotenv()
@@ -42,7 +44,8 @@ LOGGER = logging.getLogger(__name__)
 
 if not TOKEN:
     raise ValueError(
-        "Found no discord token, please specify a DISCORD_TOKEN or TEMP_DISCORD_TOKEN environment variable."
+        "Found no discord token, please specify a DISCORD_TOKEN or "
+        "TEMP_DISCORD_TOKEN environment variable."
     )
 
 

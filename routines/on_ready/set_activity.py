@@ -2,9 +2,9 @@
 import discord
 from routines.on_ready import OnReadyEvent
 from bot import LOGGER
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from ..tables import Base
-from .. import engine
+# from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+# from ..tables import Base
+# from .. import engine
 
 
 class SetActivity(OnReadyEvent):

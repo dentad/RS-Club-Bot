@@ -1,20 +1,20 @@
-import itertools
+# import itertools
 
-from sqlalchemy.sql.sqltypes import INTEGER, SmallInteger, TIMESTAMP
+# from sqlalchemy.sql.sqltypes import INTEGER, SmallInteger, TIMESTAMP
 
-from sqlalchemy.ext.mutable import Mutable
-from sqlalchemy.orm import declarative_base, relationship, backref
+# from sqlalchemy.ext.mutable import Mutable
+from sqlalchemy.orm import declarative_base  # , relationship, backref
 
 from sqlalchemy import (
     Column,
     Text,
     Integer,
     Boolean,
-    String,
     BigInteger,
     SmallInteger,
-    Time,
 )
+#     String,
+#     Time,
 
 Base = declarative_base()
 

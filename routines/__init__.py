@@ -3,17 +3,17 @@ from discord.ext import commands
 
 from bot import LOGGER
 
-import psycopg2
+# import psycopg2
 import os
-from dotenv import load_dotenv
-from sqlalchemy.sql.functions import char_length
+# from dotenv import load_dotenv
+# from sqlalchemy.sql.functions import char_length
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.pool import NullPool
+# from sqlalchemy.pool import NullPool
 from sqlalchemy.engine.url import URL
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker as maker
-import asyncio
-from discord_slash import SlashCommand, SlashContext
+# import asyncio
+from discord_slash import SlashCommand  # , SlashContext
 
 postgres_URL = URL.create(
     "postgresql+asyncpg",

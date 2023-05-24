@@ -1,8 +1,8 @@
 """Creates databases before server login."""
-import discord
+# import discord
 from routines.create_database import CreateDatabaseEvent
-from bot import LOGGER
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+# from bot import LOGGER
+# from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from ..tables import Base
 from .. import engine
 
