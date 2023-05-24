@@ -43,7 +43,6 @@ from discord_slash.utils.manage_commands import create_option  # , create_choice
 from bot import LOGGER  # , RSClubBot
 from bot import TESTING
 
-from dotenv import load_dotenv
 import random
 
 # import cProfile

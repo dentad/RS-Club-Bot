@@ -580,7 +580,7 @@ class RSRole(commands.Cog, name="Role"):
                             user = await session.get(Temp, payload.message_id)
                             user.time = int(time.time())
                             level = user.level
-                            amount = user.amount
+                            # amount = user.amount
                             queue_user = await session.get(
                                 Queue, (payload.user_id, level)
                             )
@@ -614,7 +614,7 @@ class RSRole(commands.Cog, name="Role"):
                             await message.delete()
                             # Get the user from the temp database
                             user = await session.get(Temp, payload.message_id)
-                            amount = user.amount
+                            # amount = user.amount
                             level = user.level
                             # Kick the user from the queue
                             User_leave = await session.get(
