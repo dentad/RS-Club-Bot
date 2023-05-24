@@ -72,7 +72,7 @@ class RSBan(commands.Cog, name="Ban"):
                 if days != -1:
                     await ctx.send(f"User has been banned for {days} days")
                 else:
-                    await ctx.send(f"User has been banned Indefinitely")
+                    await ctx.send("User has been banned Indefinitely")
             else:
                 await ctx.send("That user is already banned")
 

@@ -333,7 +333,7 @@ class RSQueue(commands.Cog, name="Queue"):
         servers = list(
             (
                 await session.execute(
-                    select(ExternalServer).where(ExternalServer.show == True)
+                    select(ExternalServer).where(ExternalServer.show is True)
                 )
             ).scalars()
         )
@@ -482,7 +482,7 @@ class RSQueue(commands.Cog, name="Queue"):
         for server in list(
             (
                 await session.execute(
-                    select(ExternalServer).where(ExternalServer.show == True)
+                    select(ExternalServer).where(ExternalServer.show is True)
                 )
             ).scalars()
         ):
@@ -529,7 +529,7 @@ class RSQueue(commands.Cog, name="Queue"):
         servers = list(
             (
                 await session.execute(
-                    select(ExternalServer).where(ExternalServer.show == True)
+                    select(ExternalServer).where(ExternalServer.show is True)
                 )
             ).scalars()
         )
@@ -587,7 +587,7 @@ class RSQueue(commands.Cog, name="Queue"):
                 session.add(add_temp)
                 msg += "-- Added to temporary database\n"
             elif minutes >= queue.length + 5:
-                msg += f"-- Attempting to remove the user from the queue\n"
+                msg += "-- Attempting to remove the user from the queue\n"
                 # Get user and delete them from the queue database
                 User_leave = await session.get(Queue, (queue.user_id, queue.level))
                 await session.delete(User_leave)
@@ -601,7 +601,7 @@ class RSQueue(commands.Cog, name="Queue"):
                 )
                 servers = (
                     await session.execute(
-                        select(ExternalServer).where(ExternalServer.show == True)
+                        select(ExternalServer).where(ExternalServer.show is True)
                     )
                 ).scalars()
                 for server in servers:
@@ -642,7 +642,7 @@ class RSQueue(commands.Cog, name="Queue"):
             self.failed_embed.add_field(name="Timestamp", value=f"{int(time.time())}")
             self.failed_embed.add_field(
                 name="Exception",
-                value=f"An exception has occured, continuing tasks as usual",
+                value="An exception has occured, continuing tasks as usual",
             )
             self.failed_embed.add_field(
                 name="Error/Total",
@@ -715,7 +715,7 @@ class RSQueue(commands.Cog, name="Queue"):
     @commands.command()
     async def github(self, ctx):
         await ctx.send(
-            f"Here's the github link to the bot (https://github.com/Conbonbot/RS-Club-Bot). If you want to contribute feel free to make a pull request!"
+            "Here's the github link to the bot (https://github.com/Conbonbot/RS-Club-Bot). If you want to contribute feel free to make a pull request!"
         )
 
     @commands.command()
@@ -1243,7 +1243,7 @@ class RSQueue(commands.Cog, name="Queue"):
             else:
                 server = await self.get(servers, "server_id", ctx.guild.id)
                 if server != -1 and server.show:
-                    if level == None:
+                    if level is None:
                         await ctx.send(
                             "Please specify an RS Queue to show with `!q #` or see all queues with `!q all/a`"
                         )
@@ -1318,7 +1318,7 @@ class RSQueue(commands.Cog, name="Queue"):
                 LOGGER.debug(f"Here is users_mods: {users_mods}")
                 if users_mods != -1:
                     for mod in mods:
-                        if getattr(users_mods, mod) == True:
+                        if getattr(users_mods, mod) is True:
                             temp += " " + (str(extras[mods[i]]))
                         i += 1
                 rsmods.append(temp)

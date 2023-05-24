@@ -86,7 +86,7 @@ class RSEvent(commands.Cog, name="Event"):
         if longest_name % 2 == 0:
             leaderboard_string = (
                 "```"
-                + f"Rank |"
+                + "Rank |"
                 + " " * (int(longest_name / 2))
                 + "User"
                 + " " * (int(longest_name / 2) - 2)
@@ -95,7 +95,7 @@ class RSEvent(commands.Cog, name="Event"):
         else:
             leaderboard_string = (
                 "```"
-                + f"Rank |"
+                + "Rank |"
                 + " " * (int(longest_name / 2))
                 + "User"
                 + " " * (int(longest_name / 2) - 1)
@@ -106,7 +106,7 @@ class RSEvent(commands.Cog, name="Event"):
                 leaderboard_string += (
                     f"#{i+1}"
                     + " " * (int(5) - int(len(f"#{i}")))
-                    + f"| "
+                    + "| "
                     + f"{full_data[i][0]}"
                     + " " * (1 + longest_name - int(len(full_data[i][0])))
                     + "| "
@@ -114,7 +114,7 @@ class RSEvent(commands.Cog, name="Event"):
                 )
         leaderboard_string += "```"
         leaderboard_embed = discord.Embed(
-            title=f"RS Event Leaderboard",
+            title="RS Event Leaderboard",
             description=leaderboard_string,
             color=discord.Color.green(),
         )
@@ -198,7 +198,7 @@ class RSEvent(commands.Cog, name="Event"):
                         f"This run has already been counted with a score of {event.score}"
                     )
             else:
-                await ctx.send(f"Only users in that rs can set the score of their rs.")
+                await ctx.send("Only users in that rs can set the score of their rs.")
             await session.commit()
 
 

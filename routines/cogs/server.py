@@ -211,10 +211,10 @@ class ServerJoin(commands.Cog, name="OnServerJoin"):
                     f"Hello {guild.name}! I'm the bot from The Clubs discord server. You've added me to your server, which means you'll be able to queue for Red Stars without even leaving the comfort of your discord server!"
                 )
                 await channel.send(
-                    f"In order to be connected to The Clubs, I'll need a text channel to show the current queues. Once you have a text channel that I can use, simply run `!connect # %` in the channel you want where # is the minimum rs level of your server and % is the maximum (i.e. `!connect 5 9`) and just like that you'll be connected to The Clubs!"
+                    "In order to be connected to The Clubs, I'll need a text channel to show the current queues. Once you have a text channel that I can use, simply run `!connect # %` in the channel you want where # is the minimum rs level of your server and % is the maximum (i.e. `!connect 5 9`) and just like that you'll be connected to The Clubs!"
                 )
                 await channel.send(
-                    f"NOTE: The `!connect # %` command can ONLY be run by an administrator of this server."
+                    "NOTE: The `!connect # %` command can ONLY be run by an administrator of this server."
                 )
                 break
 
@@ -274,37 +274,37 @@ class ServerJoin(commands.Cog, name="OnServerJoin"):
                         if TESTING:
                             external_embed.add_field(
                                 name="Connecting your server to the clubs",
-                                value=f"If you want to connect your corporation's discord server to The Clubs so you can run Red Stars from the comfort of your discord server, simply add the bot to your discord server with [this link](https://discord.com/api/oauth2/authorize?client_id=805960284543385650&permissions=537193536&scope=bot) and follow the steps",
+                                value="If you want to connect your corporation's discord server to The Clubs so you can run Red Stars from the comfort of your discord server, simply add the bot to your discord server with [this link](https://discord.com/api/oauth2/authorize?client_id=805960284543385650&permissions=537193536&scope=bot) and follow the steps",
                             )
                         else:
                             # Fix this
                             external_embed.add_field(
                                 name="Connecting your server to the clubs",
-                                value=f"If you want to connect your corporation's discord server to The Clubs so you can run Red Stars from the comfort of your discord server, simply add the bot to your discord server with [this link]() and follow the steps",
+                                value="If you want to connect your corporation's discord server to The Clubs so you can run Red Stars from the comfort of your discord server, simply add the bot to your discord server with [this link]() and follow the steps",
                             )
                         external_embed.add_field(
                             name="First Time Setup",
-                            value=f"Run `!connect # %` (where `#` is the minimum rs level of your server and `%` is the maximum), and your server will be connected to The Clubs.",
+                            value="Run `!connect # %` (where `#` is the minimum rs level of your server and `%` is the maximum), and your server will be connected to The Clubs.",
                         )
                         external_embed.add_field(
                             name="Setting up max RS levels",
-                            value=f"To change the min/max RS level of your server, run `!connect # %` where `#` is the minimum rs level of your server and `%` is the maximum.",
+                            value="To change the min/max RS level of your server, run `!connect # %` where `#` is the minimum rs level of your server and `%` is the maximum.",
                         )
                         external_embed.add_field(
                             name="Users and Queues",
-                            value=f"To allow users to join queues, they'll need to have a role specifying their rs level. In order to do this, use the `!level # type @<>` command, where `#` is the rs level, and `type` is either `all`, `3/4`, or `silent`. This allows users to decide if how they want to get notified (everytime, when the queue is 3/4, or not at all) `@<>` is the role that players in that rs level have. If you want to change the role, simply run the command again.",
+                            value="To allow users to join queues, they'll need to have a role specifying their rs level. In order to do this, use the `!level # type @<>` command, where `#` is the rs level, and `type` is either `all`, `3/4`, or `silent`. This allows users to decide if how they want to get notified (everytime, when the queue is 3/4, or not at all) `@<>` is the role that players in that rs level have. If you want to change the role, simply run the command again.",
                         )
                         external_embed.add_field(
                             name="Seeing Roles",
-                            value=f"Use the `!current` command to show what roles are currently connected to the bot. If you want to add more, use the `!level # type @<>` command.",
+                            value="Use the `!current` command to show what roles are currently connected to the bot. If you want to add more, use the `!level # type @<>` command.",
                         )
                         external_embed.add_field(
                             name="Disconnecting",
-                            value=f"If you want this server to be disconnected from The Clubs, have an admin run the `!disconnect` command.",
+                            value="If you want this server to be disconnected from The Clubs, have an admin run the `!disconnect` command.",
                         )
                         external_embed.add_field(
                             name="Joining/Leaving/Showing Queues",
-                            value=f"Go to the queue section of the `!help` command to get information on the queueing system (`!help q`).",
+                            value="Go to the queue section of the `!help` command to get information on the queueing system (`!help q`).",
                         )
                         await ctx.send(embed=external_embed)
                 else:  # They were found in the database, update their max rs level
@@ -360,7 +360,7 @@ class ServerJoin(commands.Cog, name="OnServerJoin"):
                 print_str = "Below is what roles are currently set up on this server. If you want to add more, use the `!level` command:\n```"
                 print_str += f"Min RS: rs{server.min_rs}\n"
                 role_ids = [
-                    sub for sub in role_ids if not sub[2] == None if not sub[2] == 0
+                    sub for sub in role_ids if sub[2] is not None if not sub[2] == 0
                 ]
                 role_ids.sort()
                 longest = 0

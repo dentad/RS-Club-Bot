@@ -187,75 +187,75 @@ class RSRole(commands.Cog, name="Role"):
             )
             extra_embed.add_field(
                 name=str(extras["croid"]),
-                value=f"Croid: Would like help getting croid.",
+                value="Croid: Would like help getting croid.",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["influence"]),
-                value=f"Influence: would like a full system clear.",
+                value="Influence: would like a full system clear.",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["nosanc"]),
-                value=f"Nosanc: No Sanctuary on Battleships.",
+                value="Nosanc: No Sanctuary on Battleships.",
                 inline=False,
             )
             extra_embed.add_field(
-                name=str(extras["rse"]), value=f"RSE: Will provide RSE.", inline=False
+                name=str(extras["rse"]), value="RSE: Will provide RSE.", inline=False
             )
             extra_embed.add_field(
                 name=str(extras["veng"]),
-                value=f"Veng: Vengeance present on Battleship(s).",
+                value="Veng: Vengeance present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["notele"]),
-                value=f"Notele: No Teleport on either Battleship or Transport.",
+                value="Notele: No Teleport on either Battleship or Transport.",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["suppress"]),
-                value=f"Suppress: Suppress present on Battleship(s).",
+                value="Suppress: Suppress present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["unity"]),
-                value=f"Unity: Unity present on Battleship(s).",
+                value="Unity: Unity present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["battery"]),
-                value=f"Battery: Battery present on Battleship(s).",
+                value="Battery: Battery present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["laser"]),
-                value=f"Laser: Laser present on Battleship(s).",
+                value="Laser: Laser present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["mass"]),
-                value=f"Mass: Mass Battery present on Battleship(s).",
+                value="Mass: Mass Battery present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["barrage"]),
-                value=f"Barrage: Barrage, best left alone, and if you help only take out capital ships.",
+                value="Barrage: Barrage, best left alone, and if you help only take out capital ships.",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["dart"]),
-                value=f"Dart: Dart launcher present on Battleship(s).",
+                value="Dart: Dart launcher present on Battleship(s).",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["solo"]),
-                value=f"solo: Can solo one planet without any help from others.",
+                value="solo: Can solo one planet without any help from others.",
                 inline=False,
             )
             extra_embed.add_field(
                 name=str(extras["solo2"]),
-                value=f"solo2: Can solo two planets without any help.",
+                value="solo2: Can solo two planets without any help.",
                 inline=False,
             )
 
@@ -627,7 +627,7 @@ class RSRole(commands.Cog, name="Role"):
                             servers = (
                                 await session.execute(
                                     select(ExternalServer).where(
-                                        ExternalServer.show == True
+                                        ExternalServer.show is True
                                     )
                                 )
                             ).scalars()

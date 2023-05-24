@@ -74,7 +74,7 @@ def on_ready_setup(bot: commands.bot):
 
 def slash_command_setup(bot: commands.bot):
     """Configures Slash Command Setup"""
-    slash = SlashCommand(bot, sync_commands=True)
+    SlashCommand(bot, sync_commands=True)
 
 
 def command_setup(bot: commands.bot):
