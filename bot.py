@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# bot.py made executable
+
 # from importlib.metadata import metadata
 import logging
 import os
