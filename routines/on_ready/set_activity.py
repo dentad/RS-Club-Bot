@@ -14,6 +14,9 @@ class SetActivity(OnReadyEvent):
         @self.bot.event
         async def on_ready():
             LOGGER.info(f"{self.bot.user.name} has connected to Discord!")
+            LOGGER.info(
+                "In guilds: {}".format(", ".join([str(g) for g in self.bot.guilds]))
+            )
             return await self.bot.change_presence(
                 activity=discord.Activity(type=1, name="RS Queueing")
             )
