@@ -636,7 +636,7 @@ class RSQueue(commands.Cog, name="Queue"):
         try:
             async with sessionmaker.begin() as session:
                 await self.check(session, channel)
-        except Exception as e:
+        except Exception:
             self.error, self.index = self.error + 1, self.index + 1
             self.failed_embed.clear_fields()
             self.failed_embed.add_field(name="Timestamp", value=f"{int(time.time())}")
