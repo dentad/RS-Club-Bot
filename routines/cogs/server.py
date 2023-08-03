@@ -222,7 +222,7 @@ class ServerJoin(commands.Cog, name="OnServerJoin"):
     @commands.has_permissions(administrator=True)
     async def connect(self, ctx, min_rs=None, max_rs=None):
         await ctx.send("This feature has currently been disabled")
-        if False:
+        if True:
             if max_rs is None or min_rs is None:
                 await ctx.send(
                     "Please specify this server's min and max rs level in the `!connect` command, i.e. `!connect 5 9`"
